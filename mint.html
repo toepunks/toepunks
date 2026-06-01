@@ -11,10 +11,79 @@
   <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
+<style>
+.row-nft {
+  position: fixed;
+  width: 60px;
+  opacity: 0.15;
+  z-index: -1;
+  animation: slideLeft 25s linear infinite;
+}
+@keyframes slideLeft {
+  0% { transform: translateX(-80px); }
+  100% { transform: translateX(120vw); }
+}
+@keyframes slideRight {
+  0% { transform: translateX(120vw); }
+  100% { transform: translateX(-80px); }
+}
+</style>
 
+<script>
+const images = ['imgi_100_039881fbdf75d5132c6a9e72f85197da.png','imgi_1000_61893ca3823e015d35a5baa57573069e.png','imgi_1001_b93d86b971fa5d27911cd0de1273751b.png','imgi_1002_2f2c87ec21980ff9ce556f9a8034dc08.png','imgi_1003_138ead89db751c866326cf668a465c2a.png','imgi_1004_59af429faf629930dbc62b90d6fda5c8.png','imgi_1005_259d54bc87156cc1ddeeb99e2d45f645.png','imgi_1006_2994faefbc1fd2c83b3e2edb4ee0d058.png','imgi_1007_186a48953e904cd7715f418732b11bc6.png','imgi_1008_861dd494c8f1d397c2ed4b6ad12bedaa.png','imgi_1009_74d12f5040d15d3bc2fa3562cf50649e.png','imgi_1010_d139e98e968aed20290a1b677909a86d.png','imgi_1011_df7b70ae8016c507e2c16703cb572328.png','imgi_1012_1c67a348c5f70a096e6368372701730c.png','imgi_1013_48aecc7d68739e78894fbce4be192070.png','imgi_1014_9c6af248fb12a9fd3b40b509da88181e.png','imgi_1015_a7829300720cb957770fd06eec466702.png','imgi_1016_2a768290c0bc486b0ac355532ebb9339.png','imgi_1017_922cfe23aabd17942acafd1d584f1f42.png','imgi_1018_5476adce98ad9d387bb502580de6bf58.png'];
+const numRows = 5;
 
+for (let row = 0; row < numRows; row++) {
+  const rowDiv = document.createElement('div');
+  rowDiv.style.cssText = 'position:fixed;left:0;width:100%;height:80px;top:' + (row*18) + '%;z-index:-1;overflow:hidden;';
+  
+  for (let i = 0; i < 25; i++) {
+    const img = document.createElement('img');
+    img.src = 'gallery/' + images[i % images.length];
+    img.className = row % 2 === 0 ? 'row-nft' : 'row-nft-right';
+    img.style.cssText = 'position:absolute;width:45px;top:15px;left:' + (i*4.5) + '%;animation-delay:' + (i*1) + 's;';
+    rowDiv.appendChild(img);
+  }
+  
+  document.body.insertAdjacentElement('afterbegin', rowDiv);
+}
+</script>
 
-
-
+<style>
+.row-nft-right {
+  position: fixed;
+  width: 60px;
+  opacity: 0.15;
+  z-index: -1;
+  animation: slideRight 25s linear infinite;
+}
+</style>
 
 </body>
+</html>
+<style>
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+.floating-nft {
+  position: fixed;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: -1;
+  animation: float 6s ease-in-out infinite;
+}
+</style>
+
+<script>
+const floatingImages = [
+  'gallery/imgi_100_039881fbdf75d5132c6a9e72f85197da.png',
+  'gallery/imgi_1000_61893ca3823e015d35a5baa57573069e.png',
+  'gallery/imgi_1001_b93d86b971fa5d27911cd0de1273751b.png',
+];
+document.body.insertAdjacentHTML('afterbegin', 
+  floatingImages.map((img, i) => 
+    '<img src="' + img + '" class="floating-nft" style="top:' + (i*30) + '%;left:' + (i*20) + '%;animation-delay:' + (i*2) + 's;">'
+  ).join('')
+);
+</script>
