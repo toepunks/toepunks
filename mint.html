@@ -13,34 +13,7 @@
     .tile { aspect-ratio: 1; }
     .tile:hover { opacity: 0.8; }
   </style>
-
-<style>
-.row-nft {
-  position: fixed; width: 60px; opacity: 0.12; z-index: -1;
-  animation: slideLeft 30s linear infinite;
-}
-@keyframes slideLeft {
-  0% { transform: translateX(-80px); }
-  100% { transform: translateX(120vw); }
-}
-</style>
 </head>
-
-<script>
-const images = ['imgi_100_039881fbdf75d5132c6a9e72f85197da.png','imgi_1000_61893ca3823e015d35a5baa57573069e.png','imgi_1001_b93d86b971fa5d27911cd0de1273751b.png','imgi_1002_2f2c87ec21980ff9ce556f9a8034dc08.png','imgi_1003_138ead89db751c866326cf668a465c2a.png'];
-for (let row = 0; row < 3; row++) {
-  const d = document.createElement('div');
-  d.style.cssText = 'position:fixed;left:0;width:100%;height:60px;top:' + (row*30) + '%;z-index:-1;overflow:hidden;';
-  for (let i = 0; i < 20; i++) {
-    const img = document.createElement('img');
-    img.src = 'gallery/' + images[i%images.length];
-    img.className = 'row-nft';
-    img.style.cssText = 'position:absolute;width:45px;top:5px;left:' + (i*5) + '%;animation-delay:' + (i*1.5) + 's;';
-    d.appendChild(img);
-  }
-  document.body.insertBefore(d, document.body.firstChild);
-}
-</script>
 <body class="bg-black text-white min-h-screen">
 
   <!-- HEADER -->
@@ -133,6 +106,14 @@ for (let row = 0; row < 3; row++) {
       const status = document.getElementById('status');
       const connectBtn = document.getElementById('connectBtn');
       const mintBtn = document.getElementById('mintBtn');
+      
+      if (!window.ethereum) {
+        alert('Please install MetaMask!');
+        return;
+      }
+      const status = document.getElementById('status');
+      const connectBtn = document.getElementById('connectBtn');
+      const mintBtn = document.getElementById('mintBtn');
       const qtySection = document.getElementById('qtySection');
       
       if (typeof window.ethereum === 'undefined') {
@@ -169,7 +150,7 @@ for (let row = 0; row < 3; row++) {
     }
     
     function changeQty(delta) {
-      mintQty = Math.max(1, Math.min(250, mintQty + delta));
+      mintQty = Math.max(1, Math.min(10, mintQty + delta));
       document.getElementById('qty').textContent = mintQty;
       document.getElementById('mintBtn').textContent = 'Mint ' + mintQty + (mintQty > 1 ? ' NFTs' : ' NFT') + ' (Free)';
     }
