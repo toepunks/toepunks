@@ -14,324 +14,55 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    body { font-family: 'Space Grotesk', sans-serif; }
-    .gradient-text {
-      background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .glow {
-      box-shadow: 0 0 60px rgba(255, 107, 107, 0.3);
-    }
-  </style>
-</head>
-<body class="bg-[#0a0a0a] text-white min-h-screen">
-
-  <!-- NAV -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/5">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <div class="text-xl font-bold tracking-tight">ToePunks</div>
-      <div class="flex items-center gap-6">
-        <a href="#about" class="text-gray-400 hover:text-white transition text-sm">About</a>
-        <a href="#traits" class="text-gray-400 hover:text-white transition text-sm">Traits</a>
-        <a href="#roadmap" class="text-gray-400 hover:text-white transition text-sm">Roadmap</a>
-        <a href="#faq" class="text-gray-400 hover:text-white transition text-sm">FAQ</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="min-h-screen flex flex-col items-center justify-center px-6 pt-20">
-    <div class="text-center max-w-3xl">
-      <div class="inline-block px-4 py-1 bg-white/5 border border-white/10 rounded-full text-sm mb-6">
-        Coming Soon on Ethereum
-      </div>
-      <h1 class="text-6xl md:text-8xl font-bold mb-6 tracking-tight">
-        <span class="gradient-text">ToePunks</span>
-      </h1>
-      <p class="text-xl md:text-2xl text-gray-400 mb-8">
-        10,000 unique digital collectibles. <br class="md:hidden">Be part of the movement.
-      </p>
-      <div class="flex flex-col md:flex-row gap-4 justify-center mb-12">
-        <a href="mint.html" class="bg-white text-black px-8 py-4 rounded-lg font-semibold hover:bg-gray-200 transition inline-block">
-          Join Waitlist
-        </a>
-        <a href="#about" class="border border-white/20 px-8 py-4 rounded-lg hover:bg-white/10 transition inline-block">
-          Learn More
-        </a>
-      </div>
-      <div class="grid grid-cols-3 gap-8 max-w-lg mx-auto">
-        <div class="text-center">
-          <div class="text-3xl md:text-4xl font-bold">10K</div>
-          <div class="text-gray-500 text-sm">Supply</div>
-        </div>
-        <div class="text-center">
-          <div class="text-3xl md:text-4xl font-bold">ETH</div>
-          <div class="text-gray-500 text-sm">Network</div>
-        </div>
-        <div class="text-center">
-          <div class="text-3xl md:text-4xl font-bold">TBD</div>
-          <div class="text-gray-500 text-sm">Mint Date</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALLERY PREVIEW -->
-  <section class="py-24 px-6 bg-white/[0.02]">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold mb-12 text-center">Preview</h2>
-      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-        <img src="./gallery/imgi_100_039881fbdf75d5132c6a9e72f85197da.png" alt="ToePunk #100" class="aspect-square rounded-xl border border-white/10 hover:border-white/50 transition cursor-pointer object-cover">
-        <img src="./gallery/imgi_1000_61893ca3823e015d35a5baa57573069e.png" alt="ToePunk #1000" class="aspect-square rounded-xl border border-white/10 hover:border-white/50 transition cursor-pointer object-cover">
-        <img src="./gallery/imgi_1001_b93d86b971fa5d27911cd0de1273751b.png" alt="ToePunk #1001" class="aspect-square rounded-xl border border-white/10 hover:border-white/50 transition cursor-pointer object-cover">
-        <img src="./gallery/imgi_1002_2f2c87ec21980ff9ce556f9a8034dc08.png" alt="ToePunk #1002" class="aspect-square rounded-xl border border-white/10 hover:border-white/50 transition cursor-pointer object-cover">
-        <img src="./gallery/imgi_1003_138ead89db751c866326cf668a465c2a.png" alt="ToePunk #1003" class="aspect-square rounded-xl border border-white/10 hover:border-white/50 transition cursor-pointer object-cover hidden md:block">
-      </div>
-      <p class="text-center text-gray-500 mt-8 text-sm">10,000 unique ToePunks. Mint soon on Ethereum.</p>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="py-24 px-6">
-    <div class="max-w-3xl mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-8">About ToePunks</h2>
-      <p class="text-gray-400 text-lg leading-relaxed mb-6">
-        ToePunks is a collection of 10,000 unique digital collectibles living on the Ethereum blockchain. Each ToePunk is programmatically generated with distinct traits, personalities, and quirks.
-      </p>
-      <p class="text-gray-400 text-lg leading-relaxed">
-        Join our community of collectors and enthusiasts. Holding a ToePunk grants you access to exclusive events, drops, and the ToePunks ecosystem.
-      </p>
-    </div>
-  </section>
-
-  <!-- TRAITS -->
-  <section id="traits" class="py-24 px-6 bg-white/[0.02]">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl font-bold mb-8 text-center">Traits & Rarity</h2>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="bg-black border border-white/10 rounded-xl p-6 text-center">
-          <div class="text-2xl font-bold mb-2">5</div>
-          <div class="text-gray-500 text-sm">Body Types</div>
-        </div>
-        <div class="bg-black border border-white/10 rounded-xl p-6 text-center">
-          <div class="text-2xl font-bold mb-2">8</div>
-          <div class="text-gray-500 text-sm">Colors</div>
-        </div>
-        <div class="bg-black border border-white/10 rounded-xl p-6 text-center">
-          <div class="text-2xl font-bold mb-2">12</div>
-          <div class="text-gray-500 text-sm">Accessories</div>
-        </div>
-        <div class="bg-black border border-white/10 rounded-xl p-6 text-center">
-          <div class="text-2xl font-bold mb-2">6</div>
-          <div class="text-gray-500 text-sm">Backgrounds</div>
-        </div>
-      </div>
-      <p class="text-center text-gray-500 mt-6 text-sm">+ Secret hidden traits for rare drops</p>
-    </div>
-  </section>
-
-  <!-- MINT DETAILS -->
-  <section id="mint" class="py-24 px-6">
-    <div class="max-w-2xl mx-auto">
-      <h2 class="text-3xl font-bold mb-8 text-center">Mint Details</h2>
-      <div class="bg-black border border-white/10 rounded-2xl p-8">
-        <div class="grid grid-cols-2 gap-8 mb-8">
-          <div>
-            <div class="text-gray-500 text-sm mb-1">Price</div>
-            <div class="text-2xl font-bold">TBD ETH</div>
-          </div>
-          <div>
-            <div class="text-gray-500 text-sm mb-1">Supply</div>
-            <div class="text-2xl font-bold">10,000</div>
-          </div>
-          <div>
-            <div class="text-gray-500 text-sm mb-1">Mint Date</div>
-            <div class="text-2xl font-bold">TBA</div>
-          </div>
-          <div>
-            <div class="text-gray-500 text-sm mb-1">Network</div>
-            <div class="text-2xl font-bold">Ethereum</div>
-          </div>
-        </div>
-        
-        <!-- Waitlist Form -->
-        <div class="border-t border-white/10 pt-8">
-          <h3 class="font-semibold mb-4">Join Waitlist</h3>
-          <form id="waitlist-form" class="flex flex-col sm:flex-row gap-3">
-            <input type="email" placeholder="your@email.com" required
-              class="flex-1 bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-white/30">
-            <button type="submit" class="bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition">
-              Join
-            </button>
-          </form>
-          <p id="form-status" class="text-sm mt-3 text-gray-500 hidden"></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ROADMAP -->
-  <section id="roadmap" class="py-24 px-6 bg-white/[0.02]">
-    <div class="max-w-3xl mx-auto">
-      <h2 class="text-3xl font-bold mb-12 text-center">Roadmap</h2>
-      <div class="space-y-6">
-        <div class="flex gap-6">
-          <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 font-bold">1</div>
-          <div class="bg-black border border-white/10 rounded-xl p-6 flex-1">
-            <h3 class="font-semibold mb-2">Launch</h3>
-            <p class="text-gray-400 text-sm">Public mint. All 10,000 ToePunks released to the community.</p>
-          </div>
-        </div>
-        <div class="flex gap-6">
-          <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 font-bold">2</div>
-          <div class="bg-black border border-white/10 rounded-xl p-6 flex-1">
-            <h3 class="font-semibold mb-2">Community Treasury</h3>
-            <p class="text-gray-400 text-sm">5% of mint proceeds go to community wallet for future drops and events.</p>
-          </div>
-        </div>
-        <div class="flex gap-6">
-          <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 font-bold">3</div>
-          <div class="bg-black border border-white/10 rounded-xl p-6 flex-1">
-            <h3 class="font-semibold mb-2">Holder Exclusive</h3>
-            <p class="text-gray-400 text-sm">Special airdrops and rewards for ToePunks holders.</p>
-          </div>
-        </div>
-        <div class="flex gap-6">
-          <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 font-bold">4</div>
-          <div class="bg-black border border-white/10 rounded-xl p-6 flex-1">
-            <h3 class="font-semibold mb-2">ToePunks Universe</h3>
-            <p class="text-gray-400 text-sm">Physical merch, collabs, and more. Stay tuned.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="py-24 px-6">
-    <div class="max-w-2xl mx-auto">
-      <h2 class="text-3xl font-bold mb-8 text-center">FAQ</h2>
-      <div class="space-y-3">
-        <details class="bg-black border border-white/10 rounded-lg p-4">
-          <summary class="cursor-pointer font-medium list-none flex items-center justify-between">
-            What is ToePunks?
-            <span class="text-gray-500">+</span>
-          </summary>
-          <p class="text-gray-400 mt-3 text-sm">ToePunks is a collection of 10,000 unique NFT collectibles on Ethereum, each with programmatically generated traits and rarities.</p>
-        </details>
-        <details class="bg-black border border-white/10 rounded-lg p-4">
-          <summary class="cursor-pointer font-medium list-none flex items-center justify-between">
-            How much to mint?
-            <span class="text-gray-500">+</span>
-          </summary>
-          <p class="text-gray-400 mt-3 text-sm">Price will be announced before mint. Follow our socials for updates.</p>
-        </details>
-        <details class="bg-black border border-white/10 rounded-lg p-4">
-          <summary class="cursor-pointer font-medium list-none flex items-center justify-between">
-            What wallet do I need?
-            <span class="text-gray-500">+</span>
-          </summary>
-          <p class="text-gray-400 mt-3 text-sm">MetaMask or any Ethereum-compatible wallet. Make sure you have enough ETH for gas.</p>
-        </details>
-        <details class="bg-black border border-white/10 rounded-lg p-4">
-          <summary class="cursor-pointer font-medium list-none flex items-center justify-between">
-            What utility do holders get?
-            <span class="text-gray-500">+</span>
-          </summary>
-          <p class="text-gray-400 mt-3 text-sm">Exclusive access to community events, airdrops, and the ToePunks ecosystem. More details on roadmap.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="py-12 px-6 border-t border-white/10">
-    <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-      <div class="text-xl font-bold tracking-tight">ToePunks</div>
-      <div class="flex gap-6">
-        <a href="#" class="text-gray-400 hover:text-white transition">Twitter/X</a>
-        <a href="#" class="text-gray-400 hover:text-white transition">Discord</a>
-        <a href="#" class="text-gray-400 hover:text-white transition">OpenSea</a>
-        <a href="#" class="text-gray-400 hover:text-white transition">Contract</a>
-      </div>
-      <div class="text-gray-500 text-sm">© 2026 ToePunks. All rights reserved.</div>
-    </div>
-  </footer>
-
-  <script>
-    // Waitlist form handler
-    document.getElementById('waitlist-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const email = e.target.querySelector('input').value;
-      const status = document.getElementById('form-status');
-      const btn = e.target.querySelector('button');
-      
-      btn.disabled = true;
-      btn.textContent = 'Sending...';
-      status.classList.remove('hidden');
-      
-      // Simpan ke localStorage dulu (bisa ganti dengan API call)
-      const waitlist = JSON.parse(localStorage.getItem('toepunks_waitlist') || '[]');
-      waitlist.push({ email, timestamp: Date.now() });
-      localStorage.setItem('toepunks_waitlist', JSON.stringify(waitlist));
-      
-      status.textContent = '✓ You\'re on the list!';
-      status.className = 'text-sm mt-3 text-green-400';
-      btn.textContent = 'Joined';
-    });
-
-    // FAQ accordion
-    document.querySelectorAll('details').forEach(detail => {
-      detail.addEventListener('toggle', () => {
-        detail.querySelector('summary span').textContent = detail.open ? '−' : '+';
-      });
-    });
-  </script>
-
+  
 <style>
 .row-nft {
   position: fixed;
   width: 60px;
   opacity: 0.15;
   z-index: -1;
-  animation: slideLeft 30s linear infinite;
-}
-.row-nft.reverse {
-  animation: slideRight 30s linear infinite;
+  animation: slideLeft 25s linear infinite;
 }
 @keyframes slideLeft {
-  0% { transform: translateX(-100px); }
+  0% { transform: translateX(-80px); }
   100% { transform: translateX(120vw); }
 }
 @keyframes slideRight {
   0% { transform: translateX(120vw); }
-  100% { transform: translateX(-100px); }
+  100% { transform: translateX(-80px); }
 }
 </style>
 
 <script>
-const images = ["imgi_1000_61893ca3823e015d35a5baa57573069e.png","imgi_1001_b93d86b971fa5d27911cd0de1273751b.png","imgi_1002_2f2c87ec21980ff9ce556f9a8034dc08.png","imgi_1003_138ead89db751c866326cf668a465c2a.png","imgi_1004_59af429faf629930dbc62b90d6fda5c8.png","imgi_1005_259d54bc87156cc1ddeeb99e2d45f645.png","imgi_1006_2994faefbc1fd2c83b3e2edb4ee0d058.png","imgi_1007_186a48953e904cd7715f418732b11bc6.png","imgi_1008_861dd494c8f1d397c2ed4b6ad12bedaa.png","imgi_1009_74d12f5040d15d3bc2fa3562cf50649e.png","imgi_100_039881fbdf75d5132c6a9e72f85197da.png","imgi_1010_d139e98e968aed20290a1b677909a86d.png","imgi_1011_df7b70ae8016c507e2c16703cb572328.png","imgi_1012_1c67a348c5f70a096e6368372701730c.png","imgi_1013_48aecc7d68739e78894fbce4be192070.png","imgi_1014_9c6af248fb12a9fd3b40b509da88181e.png","imgi_1015_a7829300720cb957770fd06eec466702.png","imgi_1016_2a768290c0bc486b0ac355532ebb9339.png","imgi_1017_922cfe23aabd17942acafd1d584f1f42.png","imgi_1018_5476adce98ad9d387bb502580de6bf58.png","imgi_1019_17a1dd5cc1629f2441c996ef11f31cba.png","imgi_101_336e56cc69c0e99b268c4383613717e2.png","imgi_1020_ecef1b53f51ecd9bfd11005d55b551b3.png","imgi_1021_6d8ff4c1d59cc6123b5a7dc5ea48c7d2.png","imgi_1022_15d5d805a7c8fbc52f3fdcb01f4baf41.png","imgi_1023_4085c0abdfd643600c99a8a3f1605370.png","imgi_1024_97e06bc46c3902bfb29a98a99527364e.png","imgi_1025_bba36277b41b25a84c6ea7d1fb0269db.png","imgi_1026_d898af5e5f2b632a78577e7071ddecc9.png","imgi_1027_fe5556b3229270cf679915ab412a5089.png","imgi_1028_4efa5b0ea5cdab4c724fd1e5dce444ac.png","imgi_1029_cd2a1d6df6f1a3eebef7ed20461ab32a.png","imgi_102_99194870d0ac561c5a393f1ae9d29530.png","imgi_1030_8695c194118940f69b9c327f2ad21c86.png","imgi_1031_ddb99f840cafbc6299b5443fbc845092.png","imgi_1032_97eace78a153f64af4e3b9f0bfcf8e38.png","imgi_1033_8ebceaf6b0d9a037ef2cf8bbfb25df3f.png","imgi_1034_c89de94d917191fdf8ebb24515c58929.png","imgi_1035_599b1786c86573aca5f66bcc985bcab6.png","imgi_1036_5244d7b417cfa2a822f87d5bc0de5485.png","imgi_1037_ebd4c8379cef2df1c4cfd1720188c011.png","imgi_1038_788e74b5489638f030447f49b4c7762d.png","imgi_1039_3a7b2542c762e822191cbbd72c7e0860.png","imgi_103_37be9aabd70e5befc0d091e075f6a649.png","imgi_1040_b6d6fd5ce08b1a6552fa8c818e00c2c1.png","imgi_1041_7f5bc6a2b13e49c3bd9623554b00f611.png"];
+const images = ['imgi_100_039881fbdf75d5132c6a9e72f85197da.png','imgi_1000_61893ca3823e015d35a5baa57573069e.png','imgi_1001_b93d86b971fa5d27911cd0de1273751b.png','imgi_1002_2f2c87ec21980ff9ce556f9a8034dc08.png','imgi_1003_138ead89db751c866326cf668a465c2a.png','imgi_1004_59af429faf629930dbc62b90d6fda5c8.png','imgi_1005_259d54bc87156cc1ddeeb99e2d45f645.png','imgi_1006_2994faefbc1fd2c83b3e2edb4ee0d058.png','imgi_1007_186a48953e904cd7715f418732b11bc6.png','imgi_1008_861dd494c8f1d397c2ed4b6ad12bedaa.png','imgi_1009_74d12f5040d15d3bc2fa3562cf50649e.png','imgi_1010_d139e98e968aed20290a1b677909a86d.png','imgi_1011_df7b70ae8016c507e2c16703cb572328.png','imgi_1012_1c67a348c5f70a096e6368372701730c.png','imgi_1013_48aecc7d68739e78894fbce4be192070.png','imgi_1014_9c6af248fb12a9fd3b40b509da88181e.png','imgi_1015_a7829300720cb957770fd06eec466702.png','imgi_1016_2a768290c0bc486b0ac355532ebb9339.png','imgi_1017_922cfe23aabd17942acafd1d584f1f42.png','imgi_1018_5476adce98ad9d387bb502580de6bf58.png'];
 const numRows = 5;
 
-// Create 5 rows of NFTs walking
 for (let row = 0; row < numRows; row++) {
   const rowDiv = document.createElement('div');
-  rowDiv.style.cssText = 'position:fixed;left:0;width:100%;height:80px;top:' + (row*16) + '%;z-index:-1;overflow:hidden;';
+  rowDiv.style.cssText = 'position:fixed;left:0;width:100%;height:80px;top:' + (row*18) + '%;z-index:-1;overflow:hidden;';
   
-  // Add NFTs walking in this row
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 25; i++) {
     const img = document.createElement('img');
     img.src = 'gallery/' + images[i % images.length];
-    img.className = 'row-nft' + (row % 2 === 1 ? ' reverse' : '');
-    img.style.cssText = 'position:absolute;width:50px;top:10px;left:' + (i*5) + 'vw;animation-delay:' + (i*1.5) + 's;' + (row % 2 === 1 ? 'animation-direction:reverse;' : '');
+    img.className = row % 2 === 0 ? 'row-nft' : 'row-nft-right';
+    img.style.cssText = 'position:absolute;width:45px;top:15px;left:' + (i*4.5) + '%;animation-delay:' + (i*1) + 's;';
     rowDiv.appendChild(img);
   }
   
   document.body.insertAdjacentElement('afterbegin', rowDiv);
 }
 </script>
+
+<style>
+.row-nft-right {
+  position: fixed;
+  width: 60px;
+  opacity: 0.15;
+  z-index: -1;
+  animation: slideRight 25s linear infinite;
+}
+</style>
+
 </body>
 </html>
 <style>
