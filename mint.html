@@ -235,8 +235,8 @@
         const contract = new ethers.Contract(CONTRACT_ADDRESS, abi, ethers);
         
         // Check mint open
-        const isOpen = await contract.mintOpen();
-        if (!isOpen) { status.textContent = 'Mint not open yet!'; return; }
+        const mintOpenStatus = await contract.mintOpen();
+        if (!mintOpenStatus) { status.textContent = 'Mint not open yet!'; return; }
         
         // Get price
         const price = await contract.mintPrice();
