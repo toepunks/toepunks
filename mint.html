@@ -75,6 +75,25 @@
         </button>
         
         <!-- MINT BUTTON (hidden until connected) -->
+                <!-- QUANTITY SELECTOR -->
+        <div class="mb-4">
+          <label class="text-gray-400 text-sm">Quantity:</label>
+          <div class="flex items-center gap-3 mt-2">
+            <button type="button" onclick="changeQty(-1)" class="bg-white/10 px-3 py-1 rounded hover:bg-white/20">-</button>
+            <span id="qty" class="text-xl font-bold w-8 text-center">1</span>
+            <button type="button" onclick="changeQty(1)" class="bg-white/10 px-3 py-1 rounded hover:bg-white/20">+</button>
+            <span class="text-gray-500 text-sm">(Max 10)</span>
+          </div>
+        </div>
+
+        <script>
+        let mintQty = 1;
+        function changeQty(delta) {
+          mintQty = Math.max(1, Math.min(10, mintQty + delta));
+          document.getElementById('qty').textContent = mintQty;
+          document.getElementById('mintBtn').textContent = 'Mint (' + mintQty + ' NFT' + (mintQty > 1 ? 's' : '') + ')';
+        }
+        </script>
         <button id="mintBtn" onclick="mint()" class="w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white font-bold py-3 rounded-lg hover:opacity-90 transition hidden">
           Mint (Free)
         </button>
@@ -191,7 +210,7 @@
       }
     }
 
-    async function mint() {
+    async function mint() { const qty = mintQty || 1; {
       const status = document.getElementById('status');
       const mintBtn = document.getElementById('mintBtn');
       
@@ -223,7 +242,7 @@
         const sup = await contract.totalSupply();
         
         // Send mint transaction
-        const tx = await contract.mint(1, { value: price });
+        const tx = await contract.mint(qty, { value: price.mul(qty) }));
         status.textContent = 'Minting... tx: ' + tx.hash.slice(0,10) + '...';
         await tx.wait();
         
