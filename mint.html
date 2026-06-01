@@ -75,6 +75,18 @@
         </button>
         
         <!-- MINT BUTTON (hidden until connected) -->
+        <button 
+        <!-- QUANTITY -->
+        <div class="mb-4">
+          <div class="text-gray-400 text-sm">Quantity:</div>
+          <div class="flex items-center justify-center gap-4 mt-2">
+            <button type="button" onclick="changeQty(-1)" class="bg-white/10 px-3 py-1 rounded">-</button>
+            <span id="qty" class="text-xl font-bold">1</span>
+            <button type="button" onclick="changeQty(1)" class="bg-white/10 px-3 py-1 rounded">+</button>
+            <span class="text-gray-500 text-sm">(Max 250)</span>
+          </div>
+        </div>
+
         <button id="mintBtn" onclick="mint()" class="w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white font-bold py-3 rounded-lg hover:opacity-90 transition hidden">
           Mint (Free)
         </button>
@@ -169,6 +181,7 @@
 
     // Wallet connection
     let walletAddress = null;
+    let mintQty = 1;
     
     async function connectWallet() {
       const status = document.getElementById('status');
@@ -189,6 +202,13 @@
       } else {
         status.textContent = 'Please install MetaMask!';
       }
+    }
+
+    
+    function changeQty(delta) {
+      mintQty = Math.max(1, Math.min(250, mintQty + delta));
+      document.getElementById('qty').textContent = mintQty;
+      document.getElementById('mintBtn').textContent = 'Mint ' + mintQty + (mintQty > 1 ? ' NFTs' : ' NFT') + ' (Free)';
     }
 
     async function mint() {
