@@ -291,30 +291,3 @@
   </script>
 </body>
 </html>
-<style>
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(5deg); }
-}
-.floating-nft {
-  position: fixed;
-  opacity: 0.15;
-  pointer-events: none;
-  z-index: -1;
-  animation: float 6s ease-in-out infinite;
-}
-</style>
-
-<script>
-const floatingImages = [
-  'gallery/imgi_100_039881fbdf75d5132c6a9e72f85197da.png',
-  'gallery/imgi_1000_61893ca3823e015d35a5baa57573069e.png',
-  'gallery/imgi_1001_b93d86b971fa5d27911cd0de1273751b.png',
-];
-// Add floating backgrounds
-document.body.insertAdjacentHTML('afterbegin', 
-  floatingImages.map((img, i) => 
-    '<img src="' + img + '" class="floating-nft" style="top:' + (i*30) + '%;left:' + (i*20) + '%;animation-delay:' + (i*2) + 's;">'
-  ).join('')
-);
-</script>
