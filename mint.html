@@ -232,7 +232,7 @@
           'function mintPrice() view returns (uint256)',
           'function mintOpen() view returns (bool)'
         ];
-        const contract = new window.ethers.Contract(CONTRACT_ADDRESS, abi, window.ethers);
+        const provider = new ethers.providers.Web3Provider(window.ethereum); const signer = provider.getSigner(); const contract = new ethers.Contract(CONTRACT_ADDRESS, abi, signer);
         
         // Check mint open
         const isOpen = await contract.mintOpen();
