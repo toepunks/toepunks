@@ -190,26 +190,42 @@
     // Wallet connection
     let walletAddress = null;
     
+    
     async function connectWallet() {
       const status = document.getElementById('status');
       const connectBtn = document.getElementById('connectBtn');
       const mintBtn = document.getElementById('mintBtn');
       
-      if (typeof window.ethereum !== 'undefined') {
-        try {
-          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-          walletAddress = accounts[0];
-          connectBtn.textContent = walletAddress.slice(0, 6) + '...' + walletAddress.slice(-4);
-          connectBtn.className = 'w-full bg-green-500 text-white font-bold py-3 rounded-lg';
-          mintBtn.classList.remove('hidden');
-          status.textContent = 'Wallet connected!';
-        } catch (e) {
-          status.textContent = 'Connection rejected';
+      // Check for MetaMask or any wallet
+      if (!window.ethereum) {
+        status.textContent = 'No wallet found! Install MetaMask.';
+        alert('Please install MetaMask browser extension!');
+        return;
+      }
+      
+      try {
+        status.textContent = 'Connecting...';
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        
+        if (accounts.length === 0) {
+          status.textContent = 'No accounts found!';
+          return;
         }
-      } else {
-        status.textContent = 'Please install MetaMask!';
+        
+        walletAddress = accounts[0];
+        connectBtn.textContent = walletAddress.slice(0, 8) + '...' + walletAddress.slice(-6);
+        connectBtn.className = 'w-full bg-green-600 text-white font-bold py-3 rounded-lg';
+        mintBtn.classList.remove('hidden');
+        status.textContent = 'Wallet connected: ' + walletAddress;
+        
+        // Show mint button explicitly
+        mintBtn.style.display = 'block';
+      } catch (e) {
+        status.textContent = 'Error: ' + e.message;
+        console.error(e);
       }
     }
+
 
     async function mint() { const qty = mintQty || 1; {
       const status = document.getElementById('status');
