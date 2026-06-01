@@ -5,32 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ToePunks — Mint Your NFT</title>
   <meta name="description" content="ToePunks - 10,000 unique digital collectibles on Ethereum">
-  <meta property="og:title" content="ToePunks">
-  <meta property="og:image" content="/og.png">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
-        
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Space Grotesk', sans-serif; }
-    .gradient-text {
-      background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    .gradient-text { background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .tile { aspect-ratio: 1; }
     .tile:hover { opacity: 0.8; }
   </style>
 </head>
-<script>window.ethers = window.ethers || ethers;</script><body class="bg-black text-white min-h-screen">
+<body class="bg-black text-white min-h-screen">
 
   <!-- HEADER -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/10">
     <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
       <div class="text-xl font-bold">ToePunks</div>
       <div class="flex items-center gap-6">
-        <a href="#gallery" class="text-gray-400 hover:text-white text-sm">Gallery</a>
-        <a href="#mint" class="text-gray-400 hover:text-white text-sm">Mint</a>
+        <a href="index.html" class="text-gray-400 hover:text-white text-sm">Home</a>
         <a href="#stats" class="text-gray-400 hover:text-white text-sm">Stats</a>
       </div>
     </div>
@@ -42,74 +33,37 @@
       <div class="inline-block px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs mb-4">
         Ethereum Mainnet
       </div>
-      <h1 class="text-5xl md:text-7xl font-bold mb-4">
-        <span class="gradient-text">ToePunks</span>
-      </h1>
-      <p class="text-xl text-gray-400 mb-6">
-        10,000 unique digital collectibles on Ethereum
-      </p>
+      <h1 class="text-5xl md:text-7xl font-bold mb-4"><span class="gradient-text">ToePunks</span></h1>
+      <p class="text-xl text-gray-400 mb-6">10,000 unique digital collectibles. Mint now!</p>
       
-      <!-- MINT STATUS -->
+      <!-- MINT CARD -->
       <div class="bg-black border border-white/10 rounded-xl p-6 mb-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
-          <div>
-            <div class="text-2xl font-bold">10,000</div>
-            <div class="text-xs text-gray-500">Total Supply</div>
-          </div>
-          <div>
-            <div class="text-2xl font-bold" id="minted">0</div>
-            <div class="text-xs text-gray-500">Minted</div>
-          </div>
-          <div>
-            <div class="text-2xl font-bold">10</div>
-            <div class="text-xs text-gray-500">Max/Wallet</div>
-          </div>
-          <div>
-            <div class="text-2xl font-bold" id="price">Free</div>
-            <div class="text-xs text-gray-500">Price (ETH)</div>
-          </div>
+        <div class="grid grid-cols-2 gap-4 mb-4">
+          <div><div class="text-2xl font-bold">10,000</div><div class="text-xs text-gray-500">Total</div></div>
+          <div><div class="text-2xl font-bold" id="minted">0</div><div class="text-xs text-gray-500">Minted</div></div>
         </div>
         
-        <!-- CONNECT BUTTON -->
+        <!-- WALLET BUTTON -->
         <button id="connectBtn" onclick="connectWallet()" class="w-full bg-white text-black font-bold py-3 rounded-lg hover:bg-gray-200 transition">
           Connect Wallet
         </button>
         
-        <!-- MINT BUTTON (hidden until connected) -->
-                <!-- QUANTITY SELECTOR -->
-        <div class="mb-4">
-          <label class="text-gray-400 text-sm">Quantity:</label>
-          <div class="flex items-center gap-3 mt-2">
-            <button type="button" onclick="changeQty(-1)" class="bg-white/10 px-3 py-1 rounded hover:bg-white/20">-</button>
-            <span id="qty" class="text-xl font-bold w-8 text-center">1</span>
-            <button type="button" onclick="changeQty(1)" class="bg-white/10 px-3 py-1 rounded hover:bg-white/20">+</button>
-            <span class="text-gray-500 text-sm">(Max 10)</span>
-          </div>
-        </div>
-
-        <script>
-        let mintQty = 1;
-        function changeQty(delta) {
-          mintQty = Math.max(1, Math.min(10, mintQty + delta));
-          document.getElementById('qty').textContent = mintQty;
-          document.getElementById('mintBtn').textContent = 'Mint (' + mintQty + ' NFT' + (mintQty > 1 ? 's' : '') + ')';
-        }
-        </script>
-        <button id="mintBtn" onclick="mint()" class="w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white font-bold py-3 rounded-lg hover:opacity-90 transition hidden">
+        <!-- MINT BUTTON -->
+        <button id="mintBtn" onclick="mint()" class="w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white font-bold py-3 rounded-lg hover:opacity-90 transition hidden mt-3">
           Mint (Free)
         </button>
         
+        <!-- QUANTITY -->
+        <div id="qtySection" class="hidden mt-4">
+          <label class="text-gray-400 text-sm">Quantity:</label>
+          <div class="flex items-center justify-center gap-3 mt-2">
+            <button onclick="changeQty(-1)" class="bg-white/10 px-3 py-1 rounded">-</button>
+            <span id="qty" class="text-xl font-bold">1</span>
+            <button onclick="changeQty(1)" class="bg-white/10 px-3 py-1 rounded">+</button>
+          </div>
+        </div>
+        
         <p id="status" class="text-xs text-gray-500 mt-3 text-center"></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALLERY GRID -->
-  <section id="gallery" class="py-16 px-4">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-2xl font-bold mb-6">Gallery</h2>
-      <div class="grid grid-cols-5 md:grid-cols-8 lg:grid-cols-10 gap-1" id="galleryGrid">
-        <!-- Generated by JS -->
       </div>
     </div>
   </section>
@@ -117,88 +71,45 @@
   <!-- STATS -->
   <section id="stats" class="py-16 px-4 bg-white/5">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl font-bold mb-6">Stats</h2>
+      <h2 class="text-2xl font-bold mb-6 text-center">Stats</h2>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="bg-black border border-white/10 rounded-lg p-4">
-          <div class="text-2xl font-bold">10,000</div>
-          <div class="text-xs text-gray-500">Total Supply</div>
+        <div class="bg-black border border-white/10 rounded-lg p-4 text-center">
+          <div class="text-2xl font-bold">10,000</div><div class="text-xs text-gray-500">Supply</div>
         </div>
-        <div class="bg-black border border-white/10 rounded-lg p-4">
-          <div class="text-2xl font-bold">0</div>
-          <div class="text-xs text-gray-500">Holders</div>
+        <div class="bg-black border border-white/10 rounded-lg p-4 text-center">
+          <div class="text-2xl font-bold" id="supplyStat">0</div><div class="text-xs text-gray-500">Minted</div>
         </div>
-        <div class="bg-black border border-white/10 rounded-lg p-4">
-          <div class="text-2xl font-bold">0 ETH</div>
-          <div class="text-xs text-gray-500">Volume</div>
+        <div class="bg-black border border-white/10 rounded-lg p-4 text-center">
+          <div class="text-2xl font-bold">0</div><div class="text-xs text-gray-500">Holders</div>
         </div>
-        <div class="bg-black border border-white/10 rounded-lg p-4">
-          <div class="text-2xl font-bold">—</div>
-          <div class="text-xs text-gray-500">Floor</div>
+        <div class="bg-black border border-white/10 rounded-lg p-4 text-center">
+          <div class="text-2xl font-bold">Free</div><div class="text-xs text-gray-500">Price</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="py-8 px-4 border-t border-white/10">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-      <div class="text-xl font-bold">ToePunks</div>
-      <div class="flex gap-4">
-        <a href="https://x.com/ToePunks_ETH" target="_blank" class="text-gray-400 hover:text-white text-sm">Twitter</a>
-        <a href="https://x.com/ToePunks_ETH" target="_blank" class="text-gray-400 hover:text-white text-sm">Discord</a>
-        <a href="https://x.com/ToePunks_ETH" target="_blank" class="text-gray-400 hover:text-white text-sm">OpenSea</a>
-      </div>
-      <div class="text-gray-500 text-xs">© 2026 ToePunks</div>
-    </div>
+  <footer class="py-8 px-4 border-t border-white/10 text-center text-gray-500 text-sm">
+    © 2026 ToePunks
   </footer>
 
   <script>
-    const sampleImages = [
-  'imgi_100_039881fbdf75d5132c6a9e72f85197da.png',
-  'imgi_1000_61893ca3823e015d35a5baa57573069e.png',
-  'imgi_1001_b93d86b971fa5d27911cd0de1273751b.png',
-  'imgi_1002_2f2c87ec21980ff9ce556f9a8034dc08.png',
-  'imgi_1003_138ead89db751c866326cf668a465c2a.png',
-  'imgi_1004_59af429faf629930dbc62b90d6fda5c8.png',
-  'imgi_1005_259d54bc87156cc1ddeeb99e2d45f645.png',
-  'imgi_1006_2994faefbc1fd2c83b3e2edb4ee0d058.png',
-  'imgi_1007_186a48953e904cd7715f418732b11bc6.png',
-  'imgi_1008_861dd494c8f1d397c2ed4b6ad12bedaa.png',
-  'imgi_1009_74d12f5040d15d3bc2fa3562cf50649e.png',
-  'imgi_1010_d139e98e968aed20290a1b677909a86d.png',
-  'imgi_1011_df7b70ae8016c507e2c16703cb572328.png',
-  'imgi_1012_1c67a348c5f70a096e6368372701730c.png',
-  'imgi_1013_48aecc7d68739e78894fbce4be192070.png',
-  'imgi_1014_9c6af248fb12a9fd3b40b509da88181e.png',
-  'imgi_1015_a7829300720cb957770fd06eec466702.png',
-  'imgi_1016_2a768290c0bc486b0ac355532ebb9339.png',
-  'imgi_1017_922cfe23aabd17942acafd1d584f1f42.png',
-];
-
-    // Gallery - show sample NFTs
-    const galleryGrid = document.getElementById('galleryGrid');
-    
-    // Generate 100 sample tiles
-    for (let i = 0; i < 20; i++) {
-      const img = sampleImages[i % sampleImages.length];
-      const div = document.createElement('div');
-      div.className = 'tile bg-white/5 hover:bg-white/10 cursor-pointer transition';
-      div.innerHTML = `<img src="gallery/${img}" class="w-full h-full object-cover" loading="lazy">`;
-      galleryGrid.appendChild(div);
-    }
-
-    // Wallet connection
     let walletAddress = null;
+    let mintQty = 1;
+    const CONTRACT = '0x0653513177c2ac2042eDa9BF6a603588Fc5eeDcf';
     
+    // Load ethers
+    let ethers;
+    (async () => { ethers = window.ethers; })();
     
     async function connectWallet() {
       const status = document.getElementById('status');
       const connectBtn = document.getElementById('connectBtn');
       const mintBtn = document.getElementById('mintBtn');
+      const qtySection = document.getElementById('qtySection');
       
-      // Check for MetaMask or any wallet
-      if (!window.ethereum) {
-        status.textContent = 'No wallet found! Install MetaMask.';
+      if (typeof window.ethereum === 'undefined') {
+        status.textContent = 'Please install MetaMask!';
         alert('Please install MetaMask browser extension!');
         return;
       }
@@ -208,106 +119,80 @@
         const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
         
         if (accounts.length === 0) {
-          status.textContent = 'No accounts found!';
+          status.textContent = 'No account found!';
           return;
         }
         
         walletAddress = accounts[0];
-        connectBtn.textContent = walletAddress.slice(0, 8) + '...' + walletAddress.slice(-6);
+        connectBtn.textContent = walletAddress.substring(0, 10) + '...' + walletAddress.substring(38);
         connectBtn.className = 'w-full bg-green-600 text-white font-bold py-3 rounded-lg';
         mintBtn.classList.remove('hidden');
-        status.textContent = 'Wallet connected: ' + walletAddress;
+        qtySection.classList.remove('hidden');
+        status.textContent = 'Connected!';
         
-        // Show mint button explicitly
-        mintBtn.style.display = 'block';
+        // Load ethers
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js';
+        script.onload = () => { window.ethers = ethers; };
+        document.head.appendChild(script);
+        
       } catch (e) {
         status.textContent = 'Error: ' + e.message;
-        console.error(e);
       }
     }
-
-
-    async function mint() { const qty = mintQty || 1; {
-      const status = document.getElementById('status');
-      const mintBtn = document.getElementById('mintBtn');
-      
+    
+    function changeQty(delta) {
+      mintQty = Math.max(1, Math.min(10, mintQty + delta));
+      document.getElementById('qty').textContent = mintQty;
+      document.getElementById('mintBtn').textContent = 'Mint ' + mintQty + (mintQty > 1 ? ' NFTs' : ' NFT') + ' (Free)';
+    }
+    
+    async function mint() {
       if (!walletAddress) {
-        status.textContent = 'Connect wallet first!';
+        alert('Please connect wallet first!');
         return;
       }
       
-      status.textContent = 'Minting... (This is a demo - no actual mint)';
-      mintBtn.disabled = true;
+      const status = document.getElementById('status');
+      const mintBtn = document.getElementById('mintBtn');
       
-      // Call contract to mint
       try {
-        const CONTRACT_ADDRESS = '0x0653513177c2ac2042eDa9BF6a603588Fc5eeDcf';
-        const abi = [
-          'function mint(uint256 quantity) external payable',
-          'function totalSupply() view returns (uint256)',
-          'function mintPrice() view returns (uint256)',
-          'function mintOpen() view returns (bool)'
-        ];
-        const contract = new ethers.Contract(CONTRACT_ADDRESS, abi, ethers);
+        status.textContent = 'Minting...';
+        mintBtn.disabled = true;
         
-        // Check mint open
-        const mintOpenStatus = await contract.mintOpen();
-        if (!mintOpenStatus) { status.textContent = 'Mint not open yet!'; return; }
+        // Wait for ethers
+        while (!window.ethers) {
+          await new Promise(r => setTimeout(r, 100));
+        }
         
-        // Get price
-        const price = await contract.mintPrice();
-        const sup = await contract.totalSupply();
+        const provider = new window.ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
         
-        // Send mint transaction
-        const tx = await contract.mint(qty, { value: price.mul(qty) }));
-        status.textContent = 'Minting... tx: ' + tx.hash.slice(0,10) + '...';
+        const abi = ['function mint(uint256 quantity) external payable'];
+        const contract = new window.ethers.Contract(CONTRACT, abi, signer);
+        
+        const tx = await contract.mint(mintQty, { value: 0 });
+        status.textContent = 'Mining... ' + tx.hash.substring(0, 10) + '...';
+        
         await tx.wait();
         
         status.textContent = '✅ Mint successful!';
-        document.getElementById('minted').textContent = parseInt(sup) + 1;
+        mintBtn.disabled = false;
+        
       } catch (e) {
-        status.textContent = 'Error: ' + e.message.slice(0,50);
+        status.textContent = 'Error: ' + e.message;
+        mintBtn.disabled = false;
       }
-      mintBtn.disabled = false;
     }
-
+    
     // Check if already connected
     if (typeof window.ethereum !== 'undefined') {
       window.ethereum.request({ method: 'eth_accounts' }).then(accounts => {
         if (accounts.length > 0) {
-          walletAddress = accounts[0];
-          document.getElementById('connectBtn').textContent = walletAddress.slice(0, 6) + '...' + walletAddress.slice(-4);
-          document.getElementById('connectBtn').className = 'w-full bg-green-500 text-white font-bold py-3 rounded-lg';
-          document.getElementById('mintBtn').classList.remove('hidden');
+          connectWallet();
         }
       });
     }
   </script>
 </body>
 </html>
-<style>
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(5deg); }
-}
-.floating-nft {
-  position: fixed;
-  opacity: 0.12;
-  pointer-events: none;
-  z-index: -1;
-  animation: float 6s ease-in-out infinite;
-}
-</style>
-
-<script>
-const floatingImages = [
-  'gallery/imgi_100_039881fbdf75d5132c6a9e72f85197da.png',
-  'gallery/imgi_1000_61893ca3823e015d35a5baa57573069e.png',
-  'gallery/imgi_1001_b93d86b971fa5d27911cd0de1273751b.png',
-];
-document.body.insertAdjacentHTML('afterbegin', 
-  floatingImages.map((img, i) => 
-    '<img src="' + img + '" class="floating-nft" style="top:' + (i*30) + '%;left:' + (i*20) + '%;animation-delay:' + (i*2) + 's;">'
-  ).join('')
-);
-</script>
