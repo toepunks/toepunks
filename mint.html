@@ -130,7 +130,15 @@
       </div>
       <div class="text-gray-500 text-xs">© 2026 ToePunks</div>
     </div>
-  </footer>
+  
+  <!-- GALLERY -->
+  <section id="gallery" class="py-16 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl font-bold mb-6 text-center">Gallery</h2>
+      <div class="grid grid-cols-5 md:grid-cols-8 gap-2" id="galleryGrid"></div>
+    </div>
+  </section>
+</footer>
 
   <script>
     const sampleImages = [
@@ -247,6 +255,16 @@
       });
     }
   </script>
+
+// Gallery
+const sampleImages = ['imgi_100_039881fbdf75d5132c6a9e72f85197da.png','imgi_1000_61893ca3823e015d35a5baa57573069e.png','imgi_1001_b93d86b971fa5d27911cd0de1273751b.png','imgi_1002_2f2c87ec21980ff9ce556f9a8034dc08.png','imgi_1003_138ead89db751c866326cf668a465c2a.png'];
+const grid = document.getElementById('galleryGrid');
+sampleImages.forEach((img, i) => {
+  const div = document.createElement('div');
+  div.className = 'aspect-square bg-white/5 rounded';
+  div.innerHTML = '<img src="gallery/' + img + '" class="w-full h-full object-cover rounded">';
+  grid.appendChild(div);
+});
 </body>
 </html>
 <style>
