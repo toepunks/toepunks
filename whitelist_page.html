@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToePunks — Whitelist</title>
+  <meta name="description" content="Join ToePunks Whitelist">
+  <link rel="icon" href="/favicon.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Space Grotesk', sans-serif; }
+    .gradient-text { 
+      background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+    }
+    .floating-nft {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius-lg;
+      opacity: 0.1;
+      pointer-events: none;
+      z-index: 0;
+      animation: float 25s infinite ease-in-out;
+    }
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(15px, -25px) rotate(5deg); }
+      50% { transform: translate(-8px, 15px) rotate(-3deg); }
+      75% { transform: translate(12px, 8px) rotate(2deg); }
+    }
+  </style>
+</head>
+<body class="bg-[#0a0a0a] text-white min-h-screen">
+
+  <!-- Floating NFT Background -->
+  <img src="./gallery/imgi_100_039881fbdf75d5132c6a9e72f85197da.png" alt="" class="floating-nft" style="top: 10%; left: 5%; animation-delay: 0s;">
+  <img src="./gallery/imgi_1000_61893ca3823e015d35a5baa57573069e.png" alt="" class="floating-nft" style="top: 20%; right: 8%; animation-delay: -5s;">
+  <img src="./gallery/imgi_1001_b93d86b971fa5d27911cd0de1273751b.png" alt="" class="floating-nft" style="top: 60%; left: 3%; animation-delay: -10s;">
+  <img src="./gallery/imgi_1002_2f2c87ec21980ff9ce556f9a8034dc08.png" alt="" class="floating-nft" style="top: 80%; right: 5%; animation-delay: -15s;">
+  <img src="./gallery/imgi_1003_138ead89db751c866326cf668a465c2a.png" alt="" class="floating-nft" style="top: 40%; left: 8%; animation-delay: -20s;">
+
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-md border-b border-white/5">
+    <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="/" class="text-xl font-bold tracking-tight">ToePunks</a>
+      <div id="walletDisplay" class="text-sm text-gray-400">Not Connected</div>
+    </div>
+  </nav>
+
+  <section class="min-h-screen flex flex-col items-center justify-center px-6 pt-16">
+    <div class="text-center max-w-xl">
+      <h1 class="text-5xl md:text-6xl font-bold mb-2">
+        <span class="gradient-text">Whitelist</span>
+      </h1>
+      <p class="text-gray-400 mb-8 text-lg">Join to secure your spot for early access mint!</p>
+
+      <div id="messageBox" class="mb-6 p-4 rounded-lg text-lg min-h-[52px] flex items-center justify-center"></div>
+
+      <!-- Step 1: Connect Wallet -->
+      <div id="step1">
+        <button id="connectBtn" class="bg-white text-black font-bold py-4 px-10 rounded-xl text-lg hover:bg-gray-200 transition w-full max-w-xs">
+          Connect Wallet
+        </button>
+      </div>
+
+      <!-- Step 2: Twitter Task -->
+      <div id="step2" class="hidden space-y-4">
+        <div class="bg-white/5 border border-white/10 rounded-xl p-6">
+          <h3 class="font-bold text-xl mb-4">Complete Tasks</h3>
+          
+          <div class="space-y-3">
+            <button id="followBtn" onclick="followTwitter()" class="w-full bg-[#1DA1F2] text-white font-bold py-3 px-6 rounded-lg hover:opacity-90 transition flex items-center justify-center gap-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              Follow @ToePunks_ETH
+            </button>
+            
+            <button id="retweetBtn" onclick="retweet()" class="w-full bg-[#1DA1F2] text-white font-bold py-3 px-6 rounded-lg hover:opacity-90 transition flex items-center justify-center gap-2 opacity-50" disabled>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 9c-.6.3-1.2.4-1.8.5-.6-.4-1.4-.6-2.2-.6-1.8 0-3.2 1.4-3.2 3.2 0 .2 0 .5.1.7-2.7-.1-5-1.4-6.6-3.5-.3.5-.5 1.1-.5 1.8 0 1.2.6 2.3 1.4 2.9-.5 0-1-.2-1.4-.4v.1c0 1.7 1.2 3.1 2.8 3.4-.3.1-.6.1-.9.1-.2 0-.4 0-.6-.1.5 1.4 1.7 2.5 3.2 2.5-1.2.9-2.6 1.4-4.2 1.4H6c3.3 0 5.1-2.7 5.1-5.1 0-.3 0-.6-.1-.9.8-.6 1.5-1.3 2-2.2z"/></svg>
+              Retweet Announcement
+            </button>
+          </div>
+        </div>
+
+        <button id="submitBtn" onclick="submitToWhitelist()" class="w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white font-bold py-4 px-10 rounded-xl text-lg hover:opacity-90 transition" disabled>
+          Join Whitelist
+        </button>
+      </div>
+
+      <!-- Success -->
+      <div id="success" class="hidden">
+        <div class="text-green-400 text-6xl mb-4">✓</div>
+        <p class="text-xl text-green-400">You're on the list!</p>
+        <p class="text-gray-400 mt-2">We'll notify you when mint goes live.</p>
+      </div>
+
+      <div class="mt-8 text-gray-500 text-sm">
+        <span id="count">0</span> already on the whitelist
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-8 px-6 border-t border-white/10 text-center text-gray-500 text-sm">
+    <p>© 2026 ToePunks. All rights reserved.</p>
+  </footer>
+
+  <script>
+    let walletAddress = '';
+    let followed = false;
+    let retweeted = false;
+
+    // Load whitelisted count
+    async function loadCount() {
+      const stored = localStorage.getItem('toepunks_whitelist') || '[]';
+      const list = JSON.parse(stored);
+      document.getElementById('count').textContent = list.length;
+    }
+    loadCount();
+
+    // Connect Wallet
+    document.getElementById('connectBtn').addEventListener('click', async () => {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          walletAddress = accounts[0];
+          showMessage('Wallet connected!', 'green');
+          document.getElementById('step1').classList.add('hidden');
+          document.getElementById('step2').classList.remove('hidden');
+          document.getElementById('walletDisplay').textContent = walletAddress.slice(0,6) + '...' + walletAddress.slice(-4);
+        } catch (err) {
+          showMessage('Connection rejected', 'red');
+        }
+      } else {
+        showMessage('Install MetaMask', 'red');
+      }
+    });
+
+    // Follow Twitter - opens in new tab
+    function followTwitter() {
+      window.open('https://x.com/ToePunks_ETH', '_blank');
+      followed = true;
+      document.getElementById('followBtn').disabled = true;
+      document.getElementById('followBtn').classList.add('opacity-50');
+      document.getElementById('followBtn').innerHTML = '✓ Following';
+      checkComplete();
+    }
+
+    // Retweet - opens in new tab
+    function retweet() {
+      window.open('https://x.com/ToePunks_ETH/status/1900000000000000000000001', '_blank');
+      retweeted = true;
+      document.getElementById('retweetBtn').disabled = true;
+      document.getElementById('retweetBtn').classList.add('opacity-50');
+      document.getElementById('retweetBtn').innerHTML = '✓ Retweeted';
+      checkComplete();
+    }
+
+    function checkComplete() {
+      if (followed) {
+        document.getElementById('submitBtn').disabled = false;
+      }
+    }
+
+    // Submit to whitelist
+    function submitToWhitelist() {
+      const stored = localStorage.getItem('toepunks_whitelist') || '[]';
+      const list = JSON.parse(stored);
+      
+      if (list.includes(walletAddress)) {
+        showMessage('Already registered!', 'yellow');
+        return;
+      }
+      
+      list.push(walletAddress);
+      localStorage.setItem('toepunks_whitelist', JSON.stringify(list));
+      
+      document.getElementById('step2').classList.add('hidden');
+      document.getElementById('success').classList.remove('hidden');
+      document.getElementById('count').textContent = list.length;
+    }
+
+    function showMessage(text, color) {
+      const box = document.getElementById('messageBox');
+      box.textContent = text;
+      box.className = `mb-6 p-4 rounded-lg text-lg min-h-[52px] flex items-center justify-center bg-${color}-500/20 text-${color}-400`;
+      box.style.background = color === 'green' ? 'rgba(34, 197, 94, 0.1)' : color === 'red' ? 'rgba(239, 68, 68, 0.1)' : 'rgba(234, 179, 8, 0.1)';
+      box.style.color = color === 'green' ? '#22c55e' : color === 'red' ? '#ef4444' : '#eab308';
+    }
+  </script>
+</body>
+</html>
