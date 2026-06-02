@@ -11,7 +11,7 @@ contract SimpleNFT {
     mapping(uint256 => string) public tokenURI;
     
     uint256 public totalSupply = 0;
-    uint256 public maxSupply = 10000;
+    uint256 public maxSupply = 5000;
     uint256 public mintPrice = 0.01 ether;
     
     bool public mintOpen = false;
