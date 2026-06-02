@@ -69,7 +69,7 @@
       <!-- Step 2: Twitter Task -->
       <div id="step2" class="hidden space-y-4">
         <div class="bg-white/5 border border-white/10 rounded-xl p-6">
-          <h3 class="font-bold text-xl mb-4">Complete Tasks</h3>
+          <h3 class="font-bold text-xl mb-4">Complete Tasks (4)</h3>
           
           <div class="space-y-3">
             <button id="followBtn" onclick="followTwitter()" class="w-full bg-[#1DA1F2] text-white font-bold py-3 px-6 rounded-lg hover:opacity-90 transition flex items-center justify-center gap-2">
@@ -85,6 +85,11 @@
             <button id="retweetBtn" onclick="retweet()" class="w-full bg-[#1DA1F2] text-white font-bold py-3 px-6 rounded-lg hover:opacity-90 transition flex items-center justify-center gap-2">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 9c-.6.3-1.2.4-1.8.5-.6-.4-1.4-.6-2.2-.6-1.8 0-3.2 1.4-3.2 3.2 0 .2 0 .5.1.7-2.7-.1-5-1.4-6.6-3.5-.3.5-.5 1.1-.5 1.8 0 1.2.6 2.3 1.4 2.9-.5 0-1-.2-1.4-.4v.1c0 1.7 1.2 3.1 2.8 3.4-.3.1-.6.1-.9.1-.2 0-.4 0-.6-.1.5 1.4 1.7 2.5 3.2 2.5-1.2.9-2.6 1.4-4.2 1.4H6c3.3 0 5.1-2.7 5.1-5.1 0-.3 0-.6-.1-.9.8-.6 1.5-1.3 2-2.2z"/></svg>
               Retweet Announcement
+            </button>
+
+            <button id="commentBtn" onclick="commentTask()" class="w-full bg-[#1DA1F2] text-white font-bold py-3 px-6 rounded-lg hover:opacity-90 transition flex items-center justify-center gap-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M1.751 10c0-4.42 3.584-8 8.005-8h4.366c4.49 0 8.129 3.64 8.129 8.13 0 2.96-1.607 5.68-4.196 7.11l-8.054 4.46v-3.69h-.067c-4.49.1-8.129-3.64-8.129-8.13z"/></svg>
+              Comment Address (Pin Tweet)
             </button>
 
             <input type="text" id="addressInput" placeholder="Your wallet address (0x...)" 
@@ -120,6 +125,7 @@
     let followed = false;
     let liked = false;
     let retweeted = false;
+    let commented = false;
 
     // Load whitelisted count
     async function loadCount() {
@@ -170,7 +176,7 @@
 
     // Retweet - opens in new tab
     function retweet() {
-      window.open('https://x.com/ToePunks_ETH/status/1900000000000000000000001', '_blank');
+      window.open('https://x.com/ToePunks_ETH/status/1900000000000000000001', '_blank');
       retweeted = true;
       document.getElementById('retweetBtn').disabled = true;
       document.getElementById('retweetBtn').classList.add('opacity-50');
@@ -178,11 +184,21 @@
       checkComplete();
     }
 
+    // Comment on pinned tweet - opens in new tab
+    function commentTask() {
+      window.open('https://x.com/ToePunks_ETH/status/1900000000000000000001', '_blank');
+      commented = true;
+      document.getElementById('commentBtn').disabled = true;
+      document.getElementById('commentBtn').classList.add('opacity-50');
+      document.getElementById('commentBtn').innerHTML = '✓ Commented';
+      checkComplete();
+    }
+
     function checkComplete() {
-      // Need all 3 tasks + valid address
+      // Need all 4 tasks + valid address
       const address = document.getElementById('addressInput').value.trim();
       const validAddress = /^0x[a-fA-F0-9]{40}$/.test(address);
-      if (followed && liked && retweeted && validAddress) {
+      if (followed && liked && retweeted && commented && validAddress) {
         document.getElementById('submitBtn').disabled = false;
       }
     }
