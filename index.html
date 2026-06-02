@@ -24,9 +24,33 @@
     .glow {
       box-shadow: 0 0 60px rgba(255, 107, 107, 0.3);
     }
+    .floating-nft {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius-lg;
+      opacity: 0.1;
+      pointer-events: none;
+      z-index: 0;
+      animation: float 25s infinite ease-in-out;
+    }
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(15px, -25px) rotate(5deg); }
+      50% { transform: translate(-8px, 15px) rotate(-3deg); }
+      75% { transform: translate(12px, 8px) rotate(2deg); }
+    }
   </style>
 </head>
 <body class="bg-[#0a0a0a] text-white min-h-screen">
+
+  <!-- Floating NFT Images -->
+  <img src="./gallery/imgi_100_039881fbdf75d5132c6a9e72f85197da.png" alt="" class="floating-nft" style="top: 10%; left: 5%; animation-delay: 0s;">
+  <img src="./gallery/imgi_1000_61893ca3823e015d35a5baa57573069e.png" alt="" class="floating-nft" style="top: 20%; right: 8%; animation-delay: -5s;">
+  <img src="./gallery/imgi_1001_b93d86b971fa5d27911cd0de1273751b.png" alt="" class="floating-nft" style="top: 60%; left: 3%; animation-delay: -10s;">
+  <img src="./gallery/imgi_1002_2f2c87ec21980ff9ce556f9a8034dc08.png" alt="" class="floating-nft" style="top: 80%; right: 5%; animation-delay: -15s;">
+  <img src="./gallery/imgi_1003_138ead89db751c866326cf668a465c2a.png" alt="" class="floating-nft" style="top: 40%; left: 8%; animation-delay: -20s;">
 
   <!-- NAV -->
   <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/5">

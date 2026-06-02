@@ -1,2 +1,2 @@
-.git
-ToePunks/
+*.zip
+node_modules/
